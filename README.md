@@ -21,18 +21,25 @@ streamlit run app.py
 - **Lineweaver-Burk 플롯**: 선형화된 키네틱 분석
 - **통계적 분석**: R² 값과 파라미터 불확실성 제공
 
+### 🆕 FRET 형광 분석
+- **FRET 키네틱**: 형광 기반 실시간 protease 활성 측정
+- **형광 시뮬레이션**: Förster 공명 에너지 전달 모델링
+- **소광 해제**: 기질 절단에 따른 형광 회복 분석
+- **실험 데이터 비교**: 시뮬레이션 vs 실험 데이터 피팅
+
 ### 시뮬레이션
 - **시간 경과 시뮬레이션**: 기질과 생성물 농도 변화 추적
+- **FRET 형광 시뮬레이션**: 시간에 따른 형광 강도 변화
 - **다양한 초기 조건**: 사용자 정의 기질 농도 및 시뮬레이션 시간
 
 ### 데이터 처리
-- **CSV 파일 업로드**: 실험 데이터 직접 입력
+- **CSV 파일 업로드**: 일반 키네틱 및 FRET 실험 데이터 입력
 - **데이터 검증**: 자동 데이터 유효성 검사
 - **결과 다운로드**: 분석 결과 CSV 다운로드
 
 ## 📁 CSV 파일 형식
 
-실험 데이터 CSV 파일은 다음 컬럼을 포함해야 합니다:
+### 일반 키네틱 분석 데이터
 
 | 컬럼명 | 설명 | 단위 |
 |--------|------|------|
@@ -41,7 +48,18 @@ streamlit run app.py
 | `time` (선택사항) | 측정 시간 | min |
 | `experiment_id` (선택사항) | 실험 ID | - |
 
+### 🆕 FRET 형광 분석 데이터
+
+| 컬럼명 | 설명 | 단위 |
+|--------|------|------|
+| `time` | 측정 시간 | min |
+| `fluorescence_intensity` | 형광 강도 | RFU |
+| `substrate_concentration` (선택사항) | 기질 농도 | μM |
+| `experiment_id` (선택사항) | 실험 ID | - |
+
 ### 예시 데이터
+
+**일반 키네틱 데이터:**
 ```csv
 substrate_concentration,reaction_rate,time,experiment_id
 1,0.0323,0,exp_1
@@ -49,6 +67,16 @@ substrate_concentration,reaction_rate,time,experiment_id
 5,0.1389,2,exp_1
 10,0.2424,3,exp_1
 20,0.4000,4,exp_1
+```
+
+**FRET 형광 데이터:**
+```csv
+time,fluorescence_intensity,substrate_concentration,experiment_id
+0.0,58.2,100.0,fret_exp_1
+5.0,164.8,78.2,fret_exp_1
+10.0,263.9,60.8,fret_exp_1
+15.0,355.8,46.3,fret_exp_1
+20.0,441.5,34.6,fret_exp_1
 ```
 
 ## 🔬 Kgp Protease 정보
