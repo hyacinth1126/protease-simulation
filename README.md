@@ -1,4 +1,4 @@
-# Kgp Protease 키네틱 시뮬레이션
+# Protease kinetics and FRET dequenching simulation
 
 Kgp protease에 의한 peptide substrate 분해 반응을 모델링하고 시뮬레이션하는 Python 애플리케이션입니다.
 
